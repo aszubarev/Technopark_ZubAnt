@@ -3,5 +3,7 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += div_format.c 
+SOURCES += div_format.c  
+
+HEADERS +=
 

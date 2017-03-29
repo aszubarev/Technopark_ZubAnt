@@ -1,0 +1,70 @@
+.my_header{
+    font-family: 'Baloo Bhaina', cursive;
+}
+
+#new_question{
+    color: #c12e2a;
+}
+
+#popular_tags{
+    color: black;
+}
+
+#beast_members{
+    color: black;
+}
+.list-best_members{
+    color: black;
+}
+
+.bm
+{
+    font-family: 'Cabin', sans-serif;
+    color: maroon;
+}
+
+.list-inline{
+    font-family: 'Viga', sans-serif;
+    color: darkblue;
+}
+
+.big_text{
+    font-size: large;
+}
+
+.medium_text{
+    font-size: medium;
+}
+
+.small_text{
+    font-size: small;
+}
+
+.createAccount{
+    font-family: 'Cabin', sans-serif;
+    font-size: medium;
+    color: darkblue;
+}
+
+.centerAvatar{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.my_text{
+    font-family: 'Cabin', sans-serif;
+    color: black;
+}
+
+
+.tag{
+    font-family: 'Viga', sans-serif;
+    color: darkblue;
+    font-size: small;
+}
+
+.answers{
+    font-family: 'Cabin', sans-serif;
+    color: maroon;
+    font-size: small;
+}
