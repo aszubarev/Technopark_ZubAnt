@@ -39,6 +39,10 @@
 
 ./1_sem/web/tp-stepic-master
 ./1_sem/web/tp-tasks-master
-
+./1_sem/web/TP_Web_1sem-master
 *.idea
 *.pro.user
+*.pyc
+./1_sem/web/ask_pupkin/ask_pupkin/__pycache__/wsgi1.cpython-35.pyc
+
+build*
