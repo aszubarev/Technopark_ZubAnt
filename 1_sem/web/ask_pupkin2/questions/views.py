@@ -55,7 +55,7 @@ def getpost(request):
             for elem in list_p:
                 keyvalue = key + " = " + elem + '\n'
                 ans += keyvalue
-        append_answer(output_message, 'POST', ans, 'Hello_world')
+        append_answer(output_message, 'GET', ans, 'Hello_world')
 
     append_end_body_answer(output_message)
 
