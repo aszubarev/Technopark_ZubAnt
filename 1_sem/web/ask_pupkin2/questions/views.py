@@ -1,62 +1,79 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
-def append_body_answer(output_message):
-    output_message.append('<html lang="en">'
-                          '<head><meta charset="UTF-8"><title>Title</title></head>'
-                          '<body>'
-                          '<h1>GET</h1>'
-                          '<form method="GET">'
-                          '<input type="text" size="40" name="get_space" value="">'
-                          '<input type="submit" value="Send">'
-                          '</form>'
-                          '<h1>POST</h1>'
-                          '<form method="POST">'
-                          '<input type="text" size="40" name="post_space" value="">'
-                          '<input type="submit" value="Send">'
-                          '</form>')
+questions = []
+for i in range(1, 5):
+    questions.append({'title': 'title ' + str(i),
+                      'id': i,
+                      'text': 'text' + str(i)
+                      })
 
 
-def append_end_body_answer(output_message):
-    output_message.append('</body>'
-                          '</html>')
+def main_func(request):
+    return render(request, 'main.html')
 
 
-def append_answer(output_message, method, query, answer):
-    output_message.append('<h1>METHOD:</h1>')
-    output_message.append(method)
-    output_message.append('<h1>QUERY STRING:</h1>')
-    output_message.append(query)
-    output_message.append('<h1>Answer:</h1>')
-    output_message.append(answer)
+def hot(request):
+    page = paginate(questions, request)
+    return render(request, 'hot.html', {'page': page})
 
 
-@csrf_exempt
-def getpost(request):
+def tag(request):
+    return render(request, 'tag.html')
 
-    output_message = ['<!DOCTYPE html>']
-    append_body_answer(output_message)
 
-    if request.method == 'POST':
-        ans = request.POST.get('post_space')
-        if ans != '':
-            append_answer(output_message, 'POST', ans, 'Hello_world')
+def question(request, question_id):
+    return render(request, 'question.html', {'question_id': question_id})
+
+
+def login(request):
+    return render(request, 'login.html')
+
+
+def signup(request):
+    return render(request, 'register.html')
+
+
+def settings(request):
+    return render(request, 'settings.html')
+
+
+def ask(request):
+    return render(request, 'ask.html')
+
+
+def paginate(list, request):
+    paginator = Paginator(list, 3)
+    pageNum = request.GET.get('page')
+    try:
+        page = paginator.page(pageNum)
+        if pageNum != None:
+            pageNum = int(pageNum)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+        pageNum = 1
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
+        pageNum = paginator.num_pages
+    page.page_range_current = get_page_range(pageNum, paginator)
+    return page
+
+
+def get_page_range(current, paginator):
+    count = 5
+    wing = 2
+    if current - wing > 0:
+        if current + wing <= paginator.num_pages:
+            page_range = range(current - wing, current + wing + 1)
         else:
-            append_answer(output_message, 'POST', "empty input data", 'Hello_world')
-        for k, v in request.POST.items():
-            print(k, v)
+            page_range = range(current - (count - (paginator.num_pages + 1 - current)), paginator.num_pages + 1)
+    else:
+        if current + count - 1 <= paginator.num_pages:
+            page_range = range(1, count + 1)
+        else:
+            page_range = range(1, paginator.num_pages + 1)
+    return page_range
 
-    elif request.method == 'GET':
-        ans = str()
-        for key, value in request.GET.items():
-            list_p = request.GET.getlist(key)
-            for elem in list_p:
-                keyvalue = key + " = " + elem + '\n'
-                ans += keyvalue
-        append_answer(output_message, 'GET', ans, 'Hello_world')
-
-    append_end_body_answer(output_message)
-
-    return HttpResponse(output_message)

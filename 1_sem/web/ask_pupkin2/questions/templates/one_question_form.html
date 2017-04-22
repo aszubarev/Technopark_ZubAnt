@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+    <div class="row">
+        <div class="col-lg-3" style="padding-top: 10px;">
+            {% if question.user.avatar != '' %}
+                <img src="/{{ question.user.avatar }}" width="100" height="100" class="img-circle"
+                     alt="avatar">
+            {% else %}
+                <img src="/src/img/default_avatar.png" width="100" height="100" class="img-circle"
+                     alt="avatar">
+            {% endif %}
+            {% if question.user.avatar != '' %}
+            <img class="centerAvatar" src="/{{ question.user.avatar }}" class="img-responsive center-block"
+                 alt="img" width="100" height="140">
+            {% else %}
+            <img class="centerAvatar" src="/{ static "pig.png" %}" class="img-responsive center-block"
+                 alt="img" width="100" height="140">
+            {% endif %}
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-12 center-block">
+                    <h3><a href="{% url 'question' question_id=1 %}" class="my_header">What i need to do, if i am a pig.</a></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 center-block">
+                    <h4><p class="my_text">Hi i am an only pig on this island, what i need to do, to become friends with birds?</p></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <button type="button" class="btn btn-default btn-xs"><span
+                    class="glyphicon glyphicon-minus"></span></button>
+            <b>5</b>
+            <button type="button" class="btn btn-default btn-xs"><span
+                    class="glyphicon glyphicon-plus"></span></button>
+        </div>
+        <div class="col-lg-8">
+            <a href="{% url 'question' question_id=1 %}" class="answers">Answers(14)</a>
+            Tags:
+            <a href="{% url 'tag' tag_id=1 %}" class="tag">#PIG</a>
+            <a href="{% url 'tag' tag_id=1 %}" class="tag">#Island</a>
+        </div>
+    </div>
+</div>
