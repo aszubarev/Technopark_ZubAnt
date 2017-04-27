@@ -60,11 +60,12 @@
 .tag{
     font-family: 'Viga', sans-serif;
     color: darkblue;
-    font-size: small;
+    font-size: medium;
 }
+
 
 .answers{
     font-family: 'Cabin', sans-serif;
     color: maroon;
-    font-size: small;
+    font-size: medium;
 }

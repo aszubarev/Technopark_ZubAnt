@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'questions',
+    'bootstrap3'
 ]
 
 MIDDLEWARE = [
@@ -81,11 +82,14 @@ WSGI_APPLICATION = 'ask_pupkin2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'ask_pupkin',
+    'USER':'root',
+    'PASSWORD': '39800627tzq9',
+    'HOST': 'localhost',
+    'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
